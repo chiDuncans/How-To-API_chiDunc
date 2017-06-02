@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by TEMPLATED
+http://templated.co
+Released for free under the Creative Commons Attribution License
+
+Name       : PlainDisplay 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20140309
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Varela" rel="stylesheet" />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+<script src="js/main.js"></script>
+
+<script src="http://code.jquery.com/jquery-1.11.1.min.js">
+</script>
+<script>
+$(function(){
+  $('#btn').click(function(){
+    $.ajax({
+      type: 'GET',
+	  url: 'https://www.goodreads.com/book/isbn/' + $('#isbn').val() + '?callback=myCallback&format=json&user_id=67761201',
+      dataType : 'jsonp',
+      jsonpCallback: 'myCallback',
+	  success: function(data){
+         $("#test").append(data.reviews_widget);
+      },
+      error: function(data){
+         alert('test2');
+      }
+   });
+});
+});
+  </script>
+
+</head>
+<body>
+<div id="wrapper">
+	<div id="header-wrapper">
+	<div id="header" class="container">
+		<div id="logo">
+			<h1><a href="#">Goodreads API Guide</a></h1>
+		</div>
+		<div id="menu">
+			<ul>
+				<li class="current_page_item" id="home"><a href="index.html" accesskey="1" title="">Home</a></li>
+				<li id="introduction"><a href="introduction.html" accesskey="2" title="">Introduction</a></li>
+				<li id="contents"><a href="contents.html" accesskey="3" title="">Contents</a></li>
+				<li id="reference"><a href="reference.html" accesskey="4" title="">References</a></li>
+			</ul>
+		</div>
+	</div>
+	</div>
+	<div id="banner">
+		<div class="container">
+			<div class="title">
+				<h2>How To Use Goodreads API?</h2>
+				<span class="byline">Get Book Info and Review With Goodreads API</span> </div>
+			<ul class="actions">
+				<li><a href="#" class="button">Get started</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="extra" class="container">
+		<div class="title">
+			<h2>Contents</h2>
+			<span class="byline">Contents on this page: How to get book review by ISBN# or by book title, work flow, and code sample.</span> </div>
+		<div id="three-column">
+			<div class="boxA">
+				<div class="box"> 
+					<p>How to get book review by ISBN# or by a book title.</p>
+				</div>
+			</div>
+			<div class="boxB">
+				<div class="box"> 
+					<p>Work flow: how you apply API key to how to get data from Goodreads.com</p>
+				</div>
+			</div>
+			<div class="boxC">
+				<div class="box"> 
+					<p>Working code sample</p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div id="featured">
+		<div class="container">
+			<div class="title">
+				<h2>Get Book Reviews with Book ISBN #</h2>
+				<span class="byline">Let's see how it looks.</span> </div>
+			<p>Book reviews will be displayed as shown below. It will be in a iframe reviews widget which " shows excerpts (first 300 characters) of the most popular reviews of a book for a given ISBN. The reviews are from all known editions of the book. " 
+			For more details, please see <strong>"Get the reviews for a book given an ISBN"</strong> on <a href="https://www.goodreads.com/api/index#book.show_by_isbn" rel="nofollow">GOODREADS.COM API OFFICIAL PAGE</a>. .</p>
+			<p>Please click search button to see how it looks.</p>
+			<p>Ex. ISBN# 0441172717 Dune by Frank Herbaert</p>
+			<h3 id="BookReview">Book Review</h3>
+				<div>
+				<p><label>ISBN<input id="isbn" type="text" size="10" maxlength="16"></label>
+				<button id="btn">Search</button>
+				</p>
+					<div id="test">
+					</div>
+				</div> 
+		
+				<h3 id="jsfiddle-1">Code Sample</h3>
+					<div id="divjsfiddle-1">
+					<script async src="//jsfiddle.net/chi_dunc/hjjy54sp/4/embed/"></script>
+					</div>
+				<script src="js/jquery-3.2.1.min.js"></script>
+			
+		</div>
+
+	</div>
+	<div id="page" class="container">
+		<div class="title">
+			<h2>How It Works</h2>
+			<span class="byline">Let's see the work flow and code sample</span> </div>
+		<p>Check to see your api key works to get review.</p>
+		<p>API KEY: HZLc3NJLe7r8l2LqoA5AfA (how to get API key is on introduction page.)</p>
+		<p>Sample URL: https://www.goodreads.com/book/title.xml?author=Arthur+Conan+Doyle&key=HZLc3NJLe7r8l2LqoA5AfA&title=Hound+of+the+Baskervilles</p>
+		<p>After "?author=", there is author name is appeared in URL.</p>
+		<p>Check to see if the URL works without the author's name</p>
+		<p>https://www.goodreads.com/book/title.xml?key=HZLc3NJLe7r8l2LqoA5AfA&title=Hound+of+the+Baskervilles<p>
+		<img src="./image/urlWithoutAuthor.PNG" alt="output of URL without author's name">
+		<iframe width="100%" height="600" src="https://jsfiddle.net/chi_dunc/hjjy54sp/5/embedded/html,result/" allowfullscreen="allowfullscreen" frameborder="0">...</iframe>
+	
+		<ul class="actions">
+			<li><a href="#" class="button">Home</a></li>
+		</ul>
+	</div>
+</div>
+<div id="copyright" class="container">
+	<p>&copy; Untitled. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
+</div>
+</body>
+</html>
